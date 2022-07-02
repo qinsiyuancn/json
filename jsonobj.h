@@ -9,7 +9,7 @@ class JsonObject
 {
 public:
     JsonObject();
-    JsonObject(const char *);
+    JsonObject(std::string);
     
     /*
      * set Json object format string to analize

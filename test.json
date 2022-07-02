@@ -1,0 +1,42 @@
+adbkdlsfjie } fsjkle sl
+{
+    "version" : "2020-10"    "-26",
+    "comment" : "te"   "st",
+    "content" : [
+    {
+        "condition" : [
+        {
+            "env" : "role",
+            "type" : "equal",
+            "value" : "1"
+        },{
+            "env" : "iso",
+            "type" : "range",
+            "big" : "1440",
+            "small": "100"
+        }] , "config" : {
+                cameraid:"1024",
+                param:"configstr1"
+            }
+    },{
+        "condition":[{
+            "env" : "role",
+            "type" : "equal",
+            "value" : "2"
+         },{
+            "env" : "iso",
+            "type" : "range",
+            "big" : "1440",
+            "small" : "100"
+         }],"config" :{
+            cameraid:"1025",
+            param:"configstr2"
+         }
+    }]
+}
+
+
+jsklej{ksfleop}djlsfem
+
+sfekl
+cjkesl
