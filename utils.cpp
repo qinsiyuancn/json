@@ -30,6 +30,7 @@ int trim(string & target)
     for(i = 0; i < sizeof(charset)/sizeof(charset[0]); i++){
         target.erase(remove(target.begin(), target.end(), charset[i]), target.end());
     }
+    return 0;
 }
 
 string::const_iterator findSpectialChar(string::const_iterator itstart, string::const_iterator itend, const char * charset, unsigned int charcount)
