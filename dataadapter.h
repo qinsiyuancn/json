@@ -12,7 +12,7 @@ public:
     T getValue()
     {
 	T ret;
-        stringstream ss;
+	std::stringstream ss;
 	ss << data;
         ss >> ret;
 	return ret;
@@ -65,9 +65,13 @@ public:
 
     operator unsigned long long()
     {
-        return getValue<unsigned long long>()
+        return getValue<unsigned long long>();
     }
 
+    operator const char *()
+    {
+        return data.c_str();
+    }
 private:
     std::string data;
 

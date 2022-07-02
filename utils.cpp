@@ -45,7 +45,7 @@ string::const_iterator findSpectialChar(string::const_iterator itstart, string::
     return itstart;
 }
 
-static string findKey(const string & jsonstr,string::const_iterator & itstart, string::const_iterator itend)
+string findKey(const string & jsonstr,string::const_iterator & itstart, string::const_iterator itend)
 {
     static const char charset[] =  {'"', ':'};
     string result;
@@ -71,7 +71,7 @@ static string findKey(const string & jsonstr,string::const_iterator & itstart, s
    return result;
 }
 
-static string findValue(const string & jsonstr, string::const_iterator & itstart, string::const_iterator itend)
+string findValue(const string & jsonstr, string::const_iterator & itstart, string::const_iterator itend)
 {
     static const char charset [] = {'{', '[', '"', ','};
     static const char charsetPair[] = {','};
@@ -99,7 +99,6 @@ static string findValue(const string & jsonstr, string::const_iterator & itstart
             result += string(jsonstr, itstart - jsonstr.begin() + 1, temp - itstart - 1);
             itstart ++;
             i = findSpectialChar(itstart, itend, charsetQuotes, sizeof(charsetQuotes)/sizeof(charsetQuotes[0]));
-            cout << "find value:" << result << endl;
         }while(*i != ',' && i < itend && itstart < itend); 
         itstart = i + 1;
         return result;

@@ -1,4 +1,5 @@
 #include "jsonarray.h"
+#include "utils.h"
 
 using namespace std;
 

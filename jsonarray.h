@@ -4,12 +4,13 @@
 #include <string>
 #include <vector>
 
+#include "dataadapter.h"
 
 class JsonArray
 {
 public:
     JsonArray();
-    JsonArray(const char *);
+    JsonArray(std::string);
 
     operator const char *();
     DataAdapter operator [] (unsigned int);
@@ -17,6 +18,6 @@ public:
     unsigned int size();
 
 private:
-    vector<std::string> json;
+    std::vector<std::string> json;
 };
 #endif
