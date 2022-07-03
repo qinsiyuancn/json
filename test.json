@@ -1,7 +1,7 @@
 adbkdlsfjie } fsjkle sl
 {
     "version" : "2020-10-26",
-    "comment" : "test",
+    "comment" : "te" xxx  "st",
     "content" : [
     {
         "condition" : [
@@ -15,8 +15,8 @@ adbkdlsfjie } fsjkle sl
             "big" : "1440",
             "small": "100"
         }] , "config" : {
-                cameraid:"1024",
-                param:"configstr1"
+                "cameraid":1024,
+                "param":"configstr1"
             }
     },{
         "condition":[{
@@ -29,8 +29,8 @@ adbkdlsfjie } fsjkle sl
             "big" : "1440",
             "small" : "100"
          }],"config" :{
-            cameraid:"1025",
-            param:"configstr2"
+            "cameraid":1025,
+            "param":"configstr2"
          }
     }]
 }
