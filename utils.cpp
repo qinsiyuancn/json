@@ -59,7 +59,7 @@ string findKey(const string & jsonstr,string::const_iterator & itstart, string::
             temp = itend;
             findContent(*itstart, *itstart, itstart, temp);
             result += string(jsonstr, itstart - jsonstr.begin() + 1, temp - itstart - 1);
-            itstart ++;
+            itstart = temp + 1;
             scit = findSpectialChar(itstart, itend, charset, sizeof(charset)/sizeof(charset[0]));
         }while(*scit != ':' && scit < itend && itstart < itend); 
         break;
@@ -98,7 +98,7 @@ string findValue(const string & jsonstr, string::const_iterator & itstart, strin
             temp = itend;
             findContent(*itstart, *itstart, itstart, temp);
             result += string(jsonstr, itstart - jsonstr.begin() + 1, temp - itstart - 1);
-            itstart ++;
+            itstart = temp + 1;
             i = findSpectialChar(itstart, itend, charsetQuotes, sizeof(charsetQuotes)/sizeof(charsetQuotes[0]));
         }while(*i != ',' && i < itend && itstart < itend); 
         itstart = i + 1;

@@ -68,12 +68,12 @@ public:
         return getValue<unsigned long long>();
     }
 
-    operator const char *()
+    operator std::string()
     {
-        return data.c_str();
+        return data;
     }
 private:
-    std::string data;
+    const std::string  data;
 
 };
 

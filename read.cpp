@@ -26,16 +26,16 @@ int main(void)
     cout << a << endl;
     cout << "========华丽的分隔线========" << endl;
     JsonObject json = a;
-    const char * version = json["version"];
-    const char * comment = json["comment"];
-    const char * content = json["content"];
-    cout << "version -> " << version << endl;
-    cout << "comment -> " << comment << endl;
-    cout << "content -> " << content << endl;
+    string version = json["version"];
+    string comment = json["comment"];
+    string content = json["content"];
+    cout << "version -> " << version.c_str() << endl;
+    cout << "comment -> " << comment.c_str() << endl;
+    cout << "content -> " << content.c_str() << endl;
     JsonArray array = string(content);
     for(unsigned int i = 0; i < array.size(); i++){
-        const char * tmp = array[i];
-        cout << "content[" << i << "] = " << tmp << endl;
+        string tmp = array[i];
+        cout << "content[" << i << "] = " << tmp.c_str() << endl;
    }
     return 0;
 }
