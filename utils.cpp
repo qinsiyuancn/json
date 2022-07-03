@@ -57,10 +57,12 @@ string findKey(const string & jsonstr,string::const_iterator & itstart, string::
         do{
             itstart = scit;
             temp = itend;
-            findContent(*itstart, *itstart, itstart, temp);
-            result += string(jsonstr, itstart - jsonstr.begin() + 1, temp - itstart - 1);
-            itstart = temp + 1;
-            scit = findSpectialChar(itstart, itend, charset, sizeof(charset)/sizeof(charset[0]));
+            if(findContent(*itstart, *itstart, itstart, temp)){
+                result += string(jsonstr, itstart - jsonstr.begin() + 1, temp - itstart - 1);
+                itstart = temp + 1;
+                scit = findSpectialChar(itstart, itend, charset, sizeof(charset)/sizeof(charset[0]));
+	    }else
+                 break;
         }while(*scit != ':' && scit < itend && itstart < itend); 
         break;
     case ':':
@@ -84,22 +86,24 @@ string findValue(const string & jsonstr, string::const_iterator & itstart, strin
     switch(*i){
     case '{':
     case '[':
-        end = (*i) + 2; 
-        itstart = i;
-        start = *i;
-        findContent(start, end, itstart, temp);
-        i = itstart;
-        itstart = temp + 1;
-        itstart = findSpectialChar(itstart, itend, charsetPair, sizeof(charsetPair)/sizeof(charsetPair[0])) + 1;
+         end = (*i) + 2; 
+         itstart = i;
+         start = *i;
+         findContent(start, end, itstart, temp);
+         i = itstart;
+         itstart = temp + 1;
+         itstart = findSpectialChar(itstart, itend, charsetPair, sizeof(charsetPair)/sizeof(charsetPair[0])) + 1;
     return string(jsonstr, i - jsonstr.begin(), temp - i + 1);
     case '"':
          do{
             itstart = i;
             temp = itend;
-            findContent(*itstart, *itstart, itstart, temp);
+            if(findContent(*itstart, *itstart, itstart, temp)){
             result += string(jsonstr, itstart - jsonstr.begin() + 1, temp - itstart - 1);
             itstart = temp + 1;
             i = findSpectialChar(itstart, itend, charsetQuotes, sizeof(charsetQuotes)/sizeof(charsetQuotes[0]));
+	    }else
+	        break;
         }while(*i != ',' && i < itend && itstart < itend); 
         itstart = i + 1;
         return result;

@@ -32,11 +32,34 @@ int main(void)
     cout << "version -> " << version.c_str() << endl;
     cout << "comment -> " << comment.c_str() << endl;
     cout << "content -> " << content.c_str() << endl;
-    JsonArray array = string(content);
+    JsonArray array = content;
     for(unsigned int i = 0; i < array.size(); i++){
         string tmp = array[i];
         cout << "content[" << i << "] = " << tmp.c_str() << endl;
-   }
+        JsonObject contentJO = tmp;
+	string condition = contentJO["condition"];
+	cout << "condition -> " << condition.c_str() << endl;
+	string config = contentJO["config"];
+	cout << "config -> " << config.c_str() << endl;
+
+
+	JsonObject conditionJO = condition;
+	string env = conditionJO["env"];
+	cout << "env -> " << env.c_str() << endl;
+
+        string type = conditionJO["type"];
+	cout << "type -> " << type.c_str() << endl;
+
+	int value = conditionJO["value"];
+	cout << "value -> " << value << endl;
+
+        JsonObject configJO = config;
+	unsigned int cameraid = configJO["cameraid"];
+	cout << "cameraid -> " << cameraid << endl;
+
+	string configstr = configJO["param"];
+        cout << "param -> " << configstr.c_str() << endl;	
+    }
     return 0;
 }
 
