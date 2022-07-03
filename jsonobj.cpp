@@ -1,5 +1,6 @@
 #include "jsonobj.h"
 #include "utils.h"
+#include <iostream>
 
 using namespace std;
 
@@ -19,6 +20,8 @@ JsonObject::JsonObject(string jsonstr)
 
 DataAdapter JsonObject::operator [](const char * key)
 {
+    cout << "oper key: " << key << endl;
+    cout << "oper content key: " << json[key] << endl;
     return json[key].c_str();
 }
 
