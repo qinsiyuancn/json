@@ -12,7 +12,7 @@ public:
     JsonArray();
     JsonArray(std::string);
 
-    operator const char *();
+    operator std::string();
     DataAdapter operator [] (unsigned int);
 
     unsigned int size();

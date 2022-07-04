@@ -1,5 +1,6 @@
 #include "jsonarray.h"
 #include "utils.h"
+#include <sstream>
 
 using namespace std;
 
@@ -23,11 +24,14 @@ unsigned int JsonArray::size()
 DataAdapter JsonArray::operator [] (unsigned int index)
 {
     if(index < size())
-        return json[index].c_str();
-    return 0;
+        return json[index];
+    return json[0];
 }
 
-JsonArray::operator const char *()
+JsonArray::operator string()
 {
-    return nullptr;
+    stringstream ss;
+    ss << '[';
+    ss << ']';
+    return ss.str();
 }
