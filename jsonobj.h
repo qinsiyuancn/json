@@ -17,7 +17,7 @@ public:
      * { "key1":"value1", "key2", "value2"  }
      */
 
-    operator const char *();
+    operator std::string();
     DataAdapter operator[](const char *);
 
 private:

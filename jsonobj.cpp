@@ -1,6 +1,8 @@
 #include "jsonobj.h"
 #include "utils.h"
 
+#include <sstream>
+
 using namespace std;
 
 JsonObject::JsonObject(){}
@@ -19,11 +21,14 @@ JsonObject::JsonObject(string jsonstr)
 
 DataAdapter JsonObject::operator [](const char * key)
 {
-    return json[key].c_str();
+    return json[key];
 }
 
-JsonObject::operator const char *()
+JsonObject::operator string()
 {
-    return nullptr;
+    stringstream ss;
+    ss << '{';
+    ss << '}';
+    return ss.str();
 }
 

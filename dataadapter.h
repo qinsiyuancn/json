@@ -6,7 +6,7 @@
 class DataAdapter
 {
 public:
-    DataAdapter(const char * data):data(data){}
+    DataAdapter(std::string & data):data(data){}
     
     template<typename T>
     T getValue()
@@ -73,7 +73,7 @@ public:
         return data;
     }
 private:
-    const std::string  data;
+    std::string &data;
 
 };
 
