@@ -27,10 +27,10 @@ int main(void)
     cout << "========华丽的分隔线========" << endl;
     JsonObject json = a;
     string version = json["version"];
-    string comment = json["comment"];
+    const char * comment = json["comment"];
     string content = json["content"];
     cout << "version -> " << version.c_str() << endl;
-    cout << "comment -> " << comment.c_str() << endl;
+    cout << "comment -> " << comment << endl;
     cout << "content -> " << content.c_str() << endl;
     JsonArray array = content;
     for(unsigned int i = 0; i < array.size(); i++){
@@ -38,7 +38,7 @@ int main(void)
         cout << "content[" << i << "] = " << tmp.c_str() << endl;
         JsonObject contentJO = tmp;
 	string condition = contentJO["condition"];
-	cout << "condition -> " << condition.c_str() << endl;
+	cout << "condition -> " << condition << endl;
 	string config = contentJO["config"];
 	cout << "config -> " << config.c_str() << endl;
 
