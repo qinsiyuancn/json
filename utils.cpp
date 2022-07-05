@@ -99,9 +99,9 @@ string findValue(const string & jsonstr, string::const_iterator & itstart, strin
             itstart = i;
             temp = itend;
             if(findContent(*itstart, *itstart, itstart, temp)){
-            result += string(jsonstr, itstart - jsonstr.begin() + 1, temp - itstart - 1);
-            itstart = temp + 1;
-            i = findSpectialChar(itstart, itend, charsetQuotes, sizeof(charsetQuotes)/sizeof(charsetQuotes[0]));
+                result += string(jsonstr, itstart - jsonstr.begin() + 1, temp - itstart - 1);
+                itstart = temp + 1;
+                i = findSpectialChar(itstart, itend, charsetQuotes, sizeof(charsetQuotes)/sizeof(charsetQuotes[0]));
 	    }else
 	        break;
         }while(*i != ',' && i < itend && itstart < itend); 
