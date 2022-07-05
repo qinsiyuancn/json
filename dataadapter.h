@@ -72,6 +72,11 @@ public:
     {
         return data;
     }
+
+    operator const char *()
+    {
+        return data.c_str();
+    }
 private:
     std::string &data;
 
