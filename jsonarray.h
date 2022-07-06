@@ -13,7 +13,8 @@ public:
     JsonArray(std::string);
 
     operator std::string();
-    DataAdapter operator [] (unsigned int);
+    CopyDataAdapter getValue(unsigned int);
+    RefDataAdapter operator [] (unsigned int);
 
     unsigned int size();
 
