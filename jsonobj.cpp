@@ -19,7 +19,12 @@ JsonObject::JsonObject(string jsonstr)
     }
 }
 
-DataAdapter JsonObject::operator [](const char * key)
+CopyDataAdapter JsonObject::getValue(const char * key)
+{
+    return json[key];
+}
+
+RefDataAdapter JsonObject::operator [](const char * key)
 {
     return json[key];
 }

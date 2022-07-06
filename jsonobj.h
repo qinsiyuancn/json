@@ -18,7 +18,8 @@ public:
      */
 
     operator std::string();
-    DataAdapter operator[](const char *);
+    CopyDataAdapter getValue(const char *);
+    RefDataAdapter operator[](const char *);
 
 private:
     std::map<std::string, std::string> json;

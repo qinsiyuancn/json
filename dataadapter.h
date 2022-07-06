@@ -3,17 +3,19 @@
 
 #include <string>
 #include <sstream>
+
 class DataAdapter
 {
 public:
-    DataAdapter(std::string & data):data(data){}
+    DataAdapter(){}
+    virtual std::string &getData() = 0;
     
     template<typename T>
     T getValue()
     {
 	T ret;
 	std::stringstream ss;
-	ss << data;
+	ss << getData().c_str();
         ss >> ret;
 	return ret;
     }
@@ -70,16 +72,41 @@ public:
 
     operator std::string()
     {
-        return data;
+        return getData();
     }
 
     operator const char *()
     {
-        return data.c_str();
+        return getData().c_str();
+    }
+
+};
+
+class CopyDataAdapter : public DataAdapter
+{
+public:
+    CopyDataAdapter(std::string data):data(data){}
+    std::string &getData() { return data; }
+private:
+    std::string data;
+};
+
+class RefDataAdapter : public DataAdapter
+{
+public:
+    RefDataAdapter(std::string & data):data(data){}
+    std::string &getData(){ return data; }
+
+    template<typename T>
+    std::string operator = (T data)
+    {
+        std::stringstream ss;
+	ss << data;
+	this->data = ss.str();
+	return this->data;
     }
 private:
-    std::string &data;
-
+    std::string & data;
 };
 
 #endif

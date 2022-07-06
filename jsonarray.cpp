@@ -21,7 +21,15 @@ unsigned int JsonArray::size()
     return json.size();
 }
 
-DataAdapter JsonArray::operator [] (unsigned int index)
+CopyDataAdapter JsonArray::getValue(unsigned int index)
+{
+    if(index < size())
+        return json[index];
+    return json[0];
+
+}
+
+RefDataAdapter JsonArray::operator [] (unsigned int index)
 {
     if(index < size())
         return json[index];
