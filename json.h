@@ -1,8 +1,13 @@
-#ifndef __DATA_ADAPTER_H__
-#define __DATA_ADAPTER_H__
+#ifndef __JSON_H__
+#define __JSON_H__
 
 #include <string>
 #include <sstream>
+#include <map>
+#include <vector>
+
+class JsonObject;
+class JsonArray;
 
 class DataAdapter
 {
@@ -75,10 +80,7 @@ public:
         return getData();
     }
 
-    operator const char *()
-    {
-        return getData().c_str();
-    }
+    
 
 };
 
@@ -87,6 +89,10 @@ class CopyDataAdapter : public DataAdapter
 public:
     CopyDataAdapter(std::string data):data(data){}
     std::string &getData() { return data; }
+    CopyDataAdapter operator [] (const char * key);
+
+    CopyDataAdapter operator [] (unsigned int index);
+
 private:
     std::string data;
 };
@@ -105,8 +111,52 @@ public:
 	this->data = ss.str();
 	return this->data;
     }
+
+    CopyDataAdapter operator [] (const char * key);
+
+    CopyDataAdapter operator [] (unsigned int index);
+
+    operator const char *()
+    {
+        return getData().c_str();
+    }
 private:
     std::string & data;
 };
 
+class JsonObject
+{
+public:
+    JsonObject();
+    JsonObject(std::string);
+    
+    /*
+     * set Json object format string to analize
+     * the format like this:
+     * { "key1":"value1", "key2", "value2"  }
+     */
+
+    operator std::string();
+    CopyDataAdapter getValue(const char *);
+    RefDataAdapter operator[](const char *);
+
+private:
+    std::map<std::string, std::string> json;
+};
+
+class JsonArray
+{
+public:
+    JsonArray();
+    JsonArray(std::string);
+
+    operator std::string();
+    CopyDataAdapter getValue(unsigned int);
+    RefDataAdapter operator [] (unsigned int);
+
+    unsigned int size();
+
+private:
+    std::vector<std::string> json;
+};
 #endif

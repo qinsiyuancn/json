@@ -2,8 +2,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "jsonobj.h"
-#include "jsonarray.h"
+#include "json.h"
 
 using namespace std;
 
@@ -36,10 +35,10 @@ int main(void)
     for(unsigned int i = 0; i < array.size(); i++){
         string tmp = array[i];
         cout << "content[" << i << "] = " << tmp.c_str() << endl;
-        JsonObject contentJO = tmp;
-	string condition = contentJO["condition"];
-	cout << "condition -> " << condition << endl;
-	string config = contentJO["config"];
+        //JsonObject contentJO = tmp;
+	string condition = array[i]["condition"];
+	cout << "condition -> " << condition.c_str() << endl;
+	string config = array[i]["config"];
 	cout << "config -> " << config.c_str() << endl;
 
 
@@ -53,11 +52,10 @@ int main(void)
 	int value = conditionJO["value"];
 	cout << "value -> " << value << endl;
 
-        JsonObject configJO = config;
-	unsigned int cameraid = configJO["cameraid"];
+	unsigned int cameraid = array[i]["config"]["cameraid"];
 	cout << "cameraid -> " << cameraid << endl;
 
-	string configstr = configJO["param"];
+	string configstr = array[i]["config"]["param"];
         cout << "param -> " << configstr.c_str() << endl;	
     }
     return 0;
