@@ -19,8 +19,7 @@ int readConfig(string & ret)
 
 int main(void)
 {
-    string a, b;
-    string::const_iterator start,end;
+    string a;
     readConfig(a);
     cout << a << endl;
     cout << "========华丽的分隔线========" << endl;
