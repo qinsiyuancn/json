@@ -32,7 +32,15 @@ RefDataAdapter JsonObject::operator [](const char * key)
 JsonObject::operator string()
 {
     stringstream ss;
+    map<std::string, std::string>::iterator it = json.begin();
     ss << '{';
+    while(1){
+        ss << '"' << it->first << "\" = \"" << it++ ->second << '"';
+        if (it == json.cend())
+            break;
+        ss << ',' ;
+    }
+
     ss << '}';
     return ss.str();
 }

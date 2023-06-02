@@ -57,6 +57,12 @@ int main(void)
 	string configstr = array[i]["config"]["param"];
         cout << "param -> " << configstr.c_str() << endl;	
     }
+
+    json["author"] = "qinsiyuan";
+    json["inttest"] = 30;
+    cout << "============华丽的分割线=============" << endl;
+    string json_str = json;
+    cout << json_str.c_str() << endl;
     return 0;
 }
 
