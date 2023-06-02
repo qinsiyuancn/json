@@ -23,7 +23,7 @@ int findContent(char charstart, char charend, string::const_iterator & itstart, 
     return 0;
 }
 
-int trim(string & target)
+static int trim(string & target)
 {
     static const char charset[] = { ' ', '\t', '\r', '\n'};
     unsigned int i = 0;
@@ -33,7 +33,7 @@ int trim(string & target)
     return 0;
 }
 
-string::const_iterator findSpectialChar(string::const_iterator itstart, string::const_iterator itend, const char * charset, unsigned int charcount)
+static string::const_iterator findSpectialChar(string::const_iterator itstart, string::const_iterator itend, const char * charset, unsigned int charcount)
 {
     string::const_iterator i;
     unsigned int j = 0;
