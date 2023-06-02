@@ -100,13 +100,63 @@ public:
     RefDataAdapter(std::string & data):data(data){}
     std::string &getData(){ return data; }
 
+    std::string operator = (std::string data)
+    {
+        return this->data = data;
+    }
+
     template<typename T>
-    std::string operator = (T data)
+    std::string setValue (T data)
     {
         std::stringstream ss;
 	ss << data;
 	this->data = ss.str();
 	return this->data;
+    }
+
+    std::string operator = (const char * data)
+    {
+        return setValue(data);
+    }
+
+    std::string operator = (int data)
+    {
+        return setValue(data);
+    }
+
+    std::string operator = (unsigned int data)
+    {
+        return setValue(data);
+    }
+
+    std::string operator = (short data)
+    {
+        return setValue(data);
+    }
+
+    std::string operator = (unsigned short data)
+    {
+        return setValue(data);
+    }
+
+    std::string operator = (long data)
+    {
+        return setValue(data);
+    }
+
+    std::string operator = (unsigned long data)
+    {
+        return setValue(data);
+    }
+
+    std::string operator = (long long data)
+    {
+        return setValue(data);
+    }
+
+    std::string operator = (unsigned long long data)
+    {
+        return setValue(data);
     }
 
     CopyDataAdapter operator [] (const char * key);

@@ -23,23 +23,28 @@ unsigned int JsonArray::size()
 
 CopyDataAdapter JsonArray::getValue(unsigned int index)
 {
-    if(index < size())
-        return json[index];
-    return json[0];
-
+    if(index >= size())
+        json.insert(json.begin() + index ,string());
+    return json[index];
 }
 
 RefDataAdapter JsonArray::operator [] (unsigned int index)
 {
-    if(index < size())
-        return json[index];
-    return json[0];
+    if(index >= size())
+        json.insert(json.begin() + index ,string());
+    return json[index];
 }
 
 JsonArray::operator string()
 {
     stringstream ss;
+    vector<string>::iterator it = json.begin();
     ss << '[';
+    while(it != json.end()){
+        ss << '"' << *(it++) << '"';
+	if(it == json.end()) break;
+	ss << ',';
+    }
     ss << ']';
     return ss.str();
 }

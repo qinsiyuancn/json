@@ -60,6 +60,19 @@ int main(void)
 
     json["author"] = "qinsiyuan";
     json["inttest"] = 30;
+    JsonArray jaForString;
+    jaForString[0] = "test1";
+    jaForString[1] = "test2";
+    jaForString[2] = "test3";
+
+    JsonArray jaForInt;
+    jaForInt[0] = 1;
+    jaForInt[1] = 2;
+    jaForInt[2] = 3;
+
+    json["arraystringtest"] = jaForString;
+    json["arrayinttest"] = jaForInt;
+
     cout << "============华丽的分割线=============" << endl;
     string json_str = json;
     cout << json_str.c_str() << endl;
