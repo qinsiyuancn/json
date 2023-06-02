@@ -72,6 +72,16 @@ public:
         return getValue<unsigned long long>();
     }
 
+    operator float()
+    {
+        return getValue<float>();
+    }
+
+    operator double()
+    {
+        return getValue<double>();
+    }
+
     operator std::string()
     {
         return getData();
@@ -155,6 +165,16 @@ public:
     }
 
     std::string operator = (unsigned long long data)
+    {
+        return setValue(data);
+    }
+
+    std::string operator = (float data)
+    {
+        return setValue(data);
+    }
+
+    std::string operator = (double data)
     {
         return setValue(data);
     }
