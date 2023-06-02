@@ -6,9 +6,6 @@
 #include <map>
 #include <vector>
 
-class JsonObject;
-class JsonArray;
-
 class DataAdapter
 {
 public:
